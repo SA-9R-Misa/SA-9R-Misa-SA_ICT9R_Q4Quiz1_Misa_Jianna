@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Q4 Quiz 1</title>
+
+    <style>
+      body{
+         background-color: lightpink;
+         font-family: Consolas;
+      }
+      .container{ 
+         display: flex;
+      }
+      .row{
+         background-image : linear-gradient(to left, #f7bcd6 ,#f379ae  );
+         border-radius:30px; 
+      }
+      #kg, #met{
+         border-radius: 30px;
+         font-size: 30px;
+         text-align: center;
+      }
+      h1{
+         font-weight: bolder;
+      }
+      img{
+         margin-top: 120px;
+         height: 400px;
+         width: 400px;
+      }
+      p{
+         color: gray;
+      }
+      #source{
+         font-size: 12px;
+      }
+      #display{
+         font-size: 30px;
+         border-radius: 30px;
+      }
+      h1 {
+         color: white;
+      }
+      .form-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 auto; 
+      }
+
+
+    </style>
+      
+</head>
+<body>
+   <br>
+   <div class="container" style="min-height: 100vh; display: flex; justify-content: center; align-items: center;">
+   <div class="row p-4" style="background-image: linear-gradient(to left, #f7bcd6, #f379ae); border-radius: 30px; max-width: 900px; width: 100%;">
+      <div class="col-md-12 text-center">
+   <div class="col-md-12 text-center">
+      <h1>BMI Calculator</h1>
+      <img src="https://i.pinimg.com/736x/62/f7/9d/62f79d0dabbba473e37f0630555ebc2d.jpg" style="height: 300px; width: 300px; margin: 20px auto;">
+   </div>
+
+   <div class="col-md-12">
+     </div>
+         <div class="col-md-12 form-container"> 
+   <div class="col-md-7 text-center">
+      <form>
+         <input type="number" class="form-control" placeholder="WEIGHT" id="kg">
+         <kbd id="kgram">kilogram</kbd>
+
+         <br><br>
+
+         <input type="number" class="form-control" placeholder="HEIGHT" id="met" step="any">
+         <kbd id="meter">meter</kbd>
+
+         <br><br>
+
+        <button type="button" class="btn" onclick="Calculate()" style="background-color: deeppink; border-radius: 30px; font-size: 25px;">Calculate BMI</button>
+      </form>
+   </div>
+</div>
+      <kbd id ="display">Output</kbd>
+      </div>
+
+      <br>
+      <p id = "source">Source: https://www.who.int/europe/news-room/fact-sheets/item/a-healthy-lifestyle---who-recommendations</p>
+      
+      <hr>
+      <p>@Jianna Misa</p>
+   </center>
+   </div>
+
+
+   <script>
+      function instructions(){
+         document.getElementById("instruct").innerHTML = "Ënter your weight and height to calculate your Body Mass Index.";
+      }
+
+      function Calculate(){
+         var weight = document.getElementById("kg").value; //get value from 1st input
+         var height = document.getElementById("met").value; //get value from 2nd input
+         var BMI = (weight / Math.pow(height, 2)).toFixed(1); //use the BMI formula; use Math.pow to square the height and toFixed to set the decimal to 1.
+
+         //use conditional statement to determin the BMI category
+         if(BMI < 18.5){
+            document.getElementById("display").innerHTML = "<b style='color: pink;'>BMI : " + BMI + "</b>   underweight";
+         }
+         else if(BMI >= 18.5  &&  BMI <= 24.9){
+            document.getElementById("display").innerHTML = "<b style='color: pink;'>BMI : " + BMI + "</b>  normal";
+         }
+         else if(BMI >= 25  &&  BMI <= 29.9){
+            document.getElementById("display").innerHTML = "<b style='color: pink;'>BMI : " + BMI + "</b>  overweight";
+         }
+         else if(weight === "" || height === "" ){
+            document.getElementById("display").innerHTML = "Please enter values";
+         }else{
+            document.getElementById("display").innerHTML = "<b style='color: pink;'>BMI : " + BMI + "</b>  obese";
+         }
+      }
+   </script>
+</body>
+</html>
